@@ -1,0 +1,37 @@
+package com.g3mnb.dao.impl;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.g3mb.dbutil.OracleConnection;
+import com.g3mnb.dao.G3mnbDao;
+import com.g3mnb.exceptions.BusinessException;
+import com.g3mnb.model.User;
+
+public class G3mnbDaoImpl implements G3mnbDao {
+
+	@Override
+	public User userCreation(User user) throws BusinessException {
+		try (Connection connection = OracleConnection.getConnection()) {
+			String sql = "{call USERCREATION(?,?,?,?,?,?)}";
+			CallableStatement callableStatement=connection.prepareCall(sql);
+			callableStatement.setString(2, user.getUsername());
+			callableStatement.setString(3, user.getPassword());
+			callableStatement.setString(4, user.getFirstname());
+			callableStatement.setString(5, user.getLastname());
+			callableStatement.setInt(6, user.getSsn());
+			callableStatement.setDate(7, new java.sql.Date(user.getBirthday().getTime())); 
+			
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			throw new BusinessException("Something's not right, please wait for assistance");
+		}
+		return user;
+	}
+	
+	
+
+}

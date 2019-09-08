@@ -1,0 +1,29 @@
+package com.g3mnb.service.impl;
+
+import com.g3mnb.dao.G3mnbDao;
+import com.g3mnb.dao.impl.G3mnbDaoImpl;
+import com.g3mnb.exceptions.BusinessException;
+import com.g3mnb.model.User;
+import com.g3mnb.service.G3mnbService;
+
+public class G3mnbServiceImpl implements G3mnbService {
+
+	private G3mnbDao g3mnbDao;
+	@Override
+	public User userCreation(User user) throws BusinessException {
+		User user = null;
+		if(!user.getUsername().equals("")&&!user.getPassword().equals("")) {
+			user = getg3mnbDao().userCreation(user);
+		}
+		else {
+			throw new BusinessException("User information is not corect.");
+		}
+		return user;
+	}
+	public G3mnbDao getg3mnbDao() {
+		if(g3mnbDao == null) {
+			g3mnbDao = new G3mnbDaoImpl();
+		}
+		return g3mnbDao;
+	}
+}

@@ -1,0 +1,7 @@
+package com.g3mnb.service.impl;
+
+import com.g3mnb.service.G3mnbService;
+
+public class G3mnbServiceImpl implements G3mnbService {
+
+}

@@ -1,0 +1,5 @@
+package com.g3mnb.model;
+
+public class Bank_Account {
+
+}

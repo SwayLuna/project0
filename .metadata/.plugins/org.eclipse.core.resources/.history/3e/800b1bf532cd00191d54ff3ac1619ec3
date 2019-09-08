@@ -1,0 +1,18 @@
+package com.g3mb.dbutil;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class OracleConnection {
+	
+	private static Connection connection;
+	
+	public static Connection getConnection() throws SQLException, ClassNotFoundException {
+		Class.forName"(oracle.jdbc.OracleDriver");
+		String url="g3mnb:oracle:thin:@localhost:1521:xe";
+		String user="g3mnb";
+		String password="g3mnb";
+		return connection=DriverManager.getConnection(url, user, password);
+	}
+
+}

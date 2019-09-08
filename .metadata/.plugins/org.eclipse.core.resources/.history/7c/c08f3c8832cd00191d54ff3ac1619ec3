@@ -1,0 +1,8 @@
+import com.g3mnb.exceptions.BusinessException;
+import com.g3mnb.model.User;
+
+public interface G3mnbDao {
+
+	public User usercreation(User user) throws BusinessException;
+	
+}

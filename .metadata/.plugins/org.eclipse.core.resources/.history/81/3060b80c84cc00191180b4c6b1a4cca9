@@ -1,0 +1,10 @@
+package com.g3mnb.main;
+
+public class G3mnbMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

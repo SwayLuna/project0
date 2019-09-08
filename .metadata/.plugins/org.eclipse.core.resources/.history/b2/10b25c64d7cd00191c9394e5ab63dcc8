@@ -1,0 +1,95 @@
+package com.g3mnb.main;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Scanner;
+
+import javax.swing.text.SimpleAttributeSet;
+
+import org.apache.log4j.Logger;
+
+import com.g3mnb.exceptions.BusinessException;
+import com.g3mnb.model.User;
+import com.g3mnb.service.G3mnbService;
+import com.g3mnb.service.impl.G3mnbServiceImpl;
+
+public class G3mnbMain {
+
+	private static final Logger log = Logger.getLogger(G3mnbMain.class);
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner scanner = new Scanner(System.in);
+
+		log.info("Welcome to Give Me My Money NOW Bank!!!");
+		log.info("================================================");
+
+		//
+
+		int yer = 0;
+		boolean logInSuccess = false;
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		sdf.setLenient(false);
+		G3mnbService g3 = new G3mnbServiceImpl();
+		User user = new User();
+		do {
+			try {
+				if (!logInSuccess) {// Not login yet
+					log.info("1) Registration");
+					log.info("2) Sign In");
+					log.info("3) Exit");
+					
+						yer= Integer.parseInt(scanner.nextLine());
+						switch(yer) {
+						case 1:
+							//User user1 = new User();
+							log.info("Please enter a Username");
+							String uname= scanner.nextLine();
+							log.info("Please enter a password");
+							String password= scanner.nextLine();
+							log.info("Please enter your first name");
+							String fname= scanner.nextLine();
+							log.info("Please enter your last name");
+							String lname= scanner.nextLine();
+							log.info("Please enter social security number");
+							int ssn= Integer.parseInt(scanner.nextLine());
+							log.info("Please enter your phone number in the form of 'xxxxxxxxxx'");
+							int phonenumber= Integer.parseInt(scanner.nextLine());
+			
+							log.info("Please enter your birthday");
+							String dob=scanner.next();
+							log.info("Thank You");
+							
+							User user1 = new User(uname,password,fname,lname,ssn, phonenumber, sdf.parse(dob));
+							user = g3.userCreation(user1);
+							log.info("message");
+							break;
+							
+						case 2: log.info("Welcome to the Sign in Page");
+								log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+								log.info("Please enter your username");
+								String username= scanner.next();
+								log.info("Please enter your password");
+								String pword = scanner.next();
+								
+								
+							break;
+							
+						case 3: log.info("Thank you for using Give Me My Money Now Bank ATM!");
+							break;
+						
+						default: log.info("Please only select numbers 1,2 or 3 as options, and try again");
+							break;
+						}
+				} else { // after you login success
+					// MENU here
+				}
+
+			} catch (NumberFormatException | ParseException | BusinessException e) {
+				log.info("Your selection must be a number. Please try again, thank you.");
+			}
+		} while (yer != 3);
+	}
+
+}

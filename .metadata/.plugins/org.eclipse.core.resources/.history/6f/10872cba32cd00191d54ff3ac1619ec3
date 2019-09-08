@@ -1,0 +1,5 @@
+package com.g3mnb.dao;
+
+public interface G3mnbDao {
+
+}

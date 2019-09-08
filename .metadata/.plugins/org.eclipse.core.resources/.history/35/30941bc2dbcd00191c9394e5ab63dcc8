@@ -1,0 +1,57 @@
+package com.g3mnb.model;
+
+public class Bank_Account {
+
+	private String username;
+	private int account_id;
+	private int checking_id;
+	
+	
+	public Bank_Account(String username, int account_id, int checking_id) {
+		super();
+		this.username = username;
+		this.account_id = account_id;
+		this.checking_id = checking_id;
+		
+		
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public int getAccount_id() {
+		return account_id;
+	}
+
+
+	public void setAccount_id(int account_id) {
+		this.account_id = account_id;
+	}
+
+
+	public int getChecking_id() {
+		return checking_id;
+	}
+
+
+	public void setChecking_id(int checking_id) {
+		this.checking_id = checking_id;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Bank_Account [username=" + username + ", account_id=" + account_id + ", checking_id=" + checking_id
+				+ "]";
+	}
+	
+	
+}

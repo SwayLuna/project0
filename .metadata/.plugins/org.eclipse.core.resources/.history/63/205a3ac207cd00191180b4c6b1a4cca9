@@ -1,0 +1,5 @@
+package com.g3mb.dbutil;
+
+public class OracleConnection {
+
+}
